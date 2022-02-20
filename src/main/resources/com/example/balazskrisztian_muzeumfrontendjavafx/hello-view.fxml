@@ -1,16 +1,81 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.VBox?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
 
-<?import javafx.scene.control.Button?>
-<VBox alignment="CENTER" spacing="20.0" xmlns:fx="http://javafx.com/fxml"
-      fx:controller="com.example.balazskrisztian_muzeumfrontendjavafx.HelloController">
-    <padding>
-        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
-    </padding>
-
-    <Label fx:id="welcomeText"/>
-    <Button text="Hello!" onAction="#onHelloButtonClick"/>
+<VBox alignment="CENTER" spacing="20.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.balazskrisztian_muzeumfrontendjavafx.Controllers.HelloController">
+<padding>
+    <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+</padding>
+<children>
+      <GridPane>
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <Button fx:id="btnAdd" mnemonicParsing="false" onAction="#addItem" text="Hozzáadás">
+               <padding>
+                  <Insets bottom="3.0" left="3.0" right="3.0" top="3.0" />
+               </padding>
+               <GridPane.margin>
+                  <Insets bottom="10.0" />
+               </GridPane.margin>
+            </Button>
+            <Button fx:id="btnEdit" mnemonicParsing="false" onAction="#editItem" text="Módosítás" GridPane.rowIndex="1">
+                <padding>
+                    <Insets bottom="3.0" left="3.0" right="3.0" top="3.0" />
+                </padding>
+               <GridPane.margin>
+                  <Insets bottom="10.0" top="20.0" />
+               </GridPane.margin>
+            </Button>
+            <Button fx:id="btnDelete" mnemonicParsing="false" onAction="#deleteItem" text="Törlés" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                <padding>
+                    <Insets bottom="3.0" left="3.0" right="3.0" top="3.0" />
+                </padding>
+               <GridPane.margin>
+                  <Insets top="10.0" />
+               </GridPane.margin>
+            </Button>
+         </children>
+      </GridPane>
+    <TabPane fx:id="tabPane" prefHeight="500.0" prefWidth="400.0" tabClosingPolicy="UNAVAILABLE">
+        <tabs>
+            <Tab fx:id="paintingPane" text="Festmények">
+                <content>
+                    <VBox>
+                        <children>
+                            <TableView fx:id="paintingTable" prefHeight="500.0" prefWidth="400.0">
+                                <columns>
+                                    <TableColumn fx:id="paintingNameCol" maxWidth="2500.0" minWidth="30.0" prefWidth="250.0" text="Név" />
+                                    <TableColumn fx:id="paintingDateCol" maxWidth="750.0" minWidth="30.0" prefWidth="75.0" text="Év" />
+                                    <TableColumn fx:id="paintingOnDisplayCol" maxWidth="750.0" minWidth="30.0" prefWidth="75.0" text="KIállítva" />
+                                </columns>
+                            </TableView>
+                        </children></VBox>
+                </content>
+            </Tab>
+            <Tab fx:id="statuePane" text="Szobrok">
+                <content>
+                    <VBox>
+                        <children>
+                            <TableView fx:id="statueTable" prefHeight="500.0" prefWidth="400.0">
+                                <columns>
+                                    <TableColumn fx:id="statuePersonCol" maxWidth="2500.0" minWidth="30.0" prefWidth="250.0" text="Név" />
+                                    <TableColumn fx:id="statueHeightCol" maxWidth="750.0" minWidth="30.0" prefWidth="75.0" text="Méret" />
+                                    <TableColumn fx:id="statuePriceCol" maxWidth="750.0" minWidth="30.0" prefWidth="75.0" text="Ár" />
+                                </columns>
+                            </TableView>
+                        </children></VBox>
+                </content>
+            </Tab>
+        </tabs>
+    </TabPane>
+</children>
 </VBox>
